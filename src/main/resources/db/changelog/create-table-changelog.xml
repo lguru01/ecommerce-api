@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<!-- User table -->
+	<changeSet author="lalitha"
+		id="initial_db_structure_create_table">
+		<createTable tableName="user">
+			<column name="id" type="INT" autoIncrement="true"
+				startWith="1" incrementBy="1" remarks="Primary Key for user">
+				<constraints nullable="false" />
+			</column>
+			<column name="username" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="firstname" type="CHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="lastname" type="CHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="city" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<!-- Category table -->
+		<createTable tableName="category">
+			<column name="id" type="INT" autoIncrement="true"
+				startWith="1" incrementBy="1" remarks="Primary Key for category">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>		
+
+		<!-- Products table -->
+		<createTable tableName="product">
+			<column name="id" type="INT" autoIncrement="true"
+				startWith="1" incrementBy="1" remarks="Primary Key for product">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(45)">
+				<constraints nullable="false" />
+			</column>
+			<column name="desc" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="price" type="DECIMAL(20,2)">
+				<constraints nullable="false" />
+			</column>
+			<column name="categoryId" type="INT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<addForeignKeyConstraint constraintName="fk_product_categoryId" 
+								 referencedTableName="category" 
+								 baseColumnNames="categoryId" 
+								 baseTableName="product" 
+								 referencedColumnNames="id"
+								 onDelete="NO ACTION" onUpdate="NO ACTION"/>			
+
+		
+		<!-- orders table -->
+		<createTable tableName="order_details">
+			<column name="id" type="INT" autoIncrement="true"
+				startWith="1" incrementBy="1" remarks="Primary Key for order">
+				<constraints nullable="false" />
+			</column>
+			<column name="userId" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="productId" type="INT">
+				<constraints nullable="false" />
+			</column>	
+			<column name="rating" type="INT">
+				<constraints nullable="false" />
+			</column>	
+			<column name="quantity" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="createDateTime" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
+				<constraints nullable="false" />
+			</column>								
+		</createTable>
+		<addForeignKeyConstraint constraintName="fk_order_details_userId" 
+								 referencedTableName="user" 
+								 baseColumnNames="userId" 
+								 baseTableName="order_details" 
+								 referencedColumnNames="id"
+								 onDelete="NO ACTION" onUpdate="NO ACTION"/>
+		<addForeignKeyConstraint constraintName="fk_order_details_productId" 
+								 referencedTableName="product" 
+								 baseColumnNames="productId" 
+								 baseTableName="order_details" 
+								 referencedColumnNames="id"
+								 onDelete="NO ACTION" onUpdate="NO ACTION"/>								 
+		
+		<!-- sale table -->
+		<createTable tableName="sale_items">
+			<column name="id" type="INT" autoIncrement="true"
+				startWith="1" incrementBy="1" remarks="Primary Key for sale">
+				<constraints nullable="false" />
+			</column>
+			<column name="productId" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="categoryId" type="INT">
+				<constraints nullable="false" />
+			</column>	
+			<column name="salePrice" type="DECIMAL(20,2)">
+				<constraints nullable="false" />
+			</column>	
+			<column name="active" type="BOOLEAN">
+				<constraints nullable="false" />
+			</column>			
+			<column name="createDate" type="DATE" defaultValueComputed="CURRENT_DATE">
+				<constraints nullable="false" />
+			</column>								
+		</createTable>
+		<addForeignKeyConstraint constraintName="fk_sale_items_categoryId" 
+								 referencedTableName="category" 
+								 baseColumnNames="categoryId" 
+								 baseTableName="sale_items" 
+								 referencedColumnNames="id"
+								 onDelete="NO ACTION" onUpdate="NO ACTION"/>					
+		<addForeignKeyConstraint constraintName="fk_sale_items_productId" 
+								 referencedTableName="product" 
+								 baseColumnNames="productId" 
+								 baseTableName="sale_items" 
+								 referencedColumnNames="id"
+								 onDelete="NO ACTION" onUpdate="NO ACTION"/>				
+	</changeSet>
+</databaseChangeLog>

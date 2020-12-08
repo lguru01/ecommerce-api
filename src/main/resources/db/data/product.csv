@@ -1,0 +1,11 @@
+id,name,desc,price,categoryId
+1,Vinyl_Gloves,Vinyl Gloves,25.12,2
+2,Nitrile_Gloves,Nitrile Gloves,19,2
+3,Food_Prep_Gloves,Food Prep Gloves,15,2
+4,AI_Super_Power,AI Super Power by abc,31.88,1
+5,Intelligent_Automation,Intelligent Automation by xyz,30,1
+6,Robotics,Robotics by author,36,1
+7,ASUS_LAPTOP,Asus Laptop 15 inch,449,3
+8,LENOVO_LAPTOP,Lenovo Laptop 13 inch,619,3
+9,HP_LAPTOP,Hp Laptop 15 inch,649,3
+10,PANASONIC_LAPTOP,Panasonic Laptop 115 inch,999,3

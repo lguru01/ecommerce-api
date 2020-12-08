@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<!-- User table -->
+	<changeSet author="lalitha" id="initial_db_structure_insert_table">
+		<loadData file="db/data/user.csv" tableName="user"/>
+		<loadData file="db/data/category.csv" tableName="category"/>
+		<loadData file="db/data/product.csv" tableName="product"/>
+		<loadData file="db/data/order.csv" tableName="order_details"/>
+		<loadData file="db/data/sale_items.csv" tableName="sale_items"/>		
+	</changeSet>
+</databaseChangeLog>
