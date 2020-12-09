@@ -25,15 +25,15 @@ public class ErrorResponse<T> implements Response<T> {
 	@Override
 	public Instant getTimestamp() {
 		return timestamp;
+	}	
+
+	public void setTimestamp(Instant timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	@Override
 	public String getRequestId() {
 		return requestId;
-	}
-
-	public void setTimestamp(Instant timestamp) {
-		this.timestamp = timestamp;
 	}
 
 	public void setRequestId(String requestId) {
@@ -47,5 +47,4 @@ public class ErrorResponse<T> implements Response<T> {
 	public void setError(GlobalError error) {
 		this.error = error;
 	}
-
 }

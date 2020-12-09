@@ -18,7 +18,8 @@ public class AuthServiceImpl implements AuthService{
 
 	@Override
 	public User authenticate(String username, String password) {
-		return userMapper.authenticateUser(username, password).orElseThrow(() -> new ResourceNotFoundException("User not Found"));
+		return userMapper.authenticateUser(username, password).orElseThrow(
+				() -> new ResourceNotFoundException("User not Found"));
 	}
 
 }

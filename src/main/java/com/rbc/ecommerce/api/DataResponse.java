@@ -29,9 +29,17 @@ public class DataResponse<T> implements Response<T> {
 		return timestamp;
 	}
 
+	public void setTimestamp(Instant timestamp) {
+		this.timestamp = timestamp;
+	}
+
 	@Override
 	public String getRequestId() {
 		return requestId;
+	}	
+
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
 	}
 	
 	@Nullable
@@ -43,13 +51,4 @@ public class DataResponse<T> implements Response<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
-
-	public void setTimestamp(Instant timestamp) {
-		this.timestamp = timestamp;
-	}
-
-	public void setRequestId(String requestId) {
-		this.requestId = requestId;
-	}
-
 }

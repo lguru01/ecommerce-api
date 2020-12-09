@@ -40,8 +40,8 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	/**
-	 * New Sale items are cached for the user for the current date after 5AM and 
-	 * it will cleared at 5AM for new sale items.
+	 * Cache sale items of the user will be clear at 5AM and new sale items will
+	 * be cached for the current date.
 	 */
 	@Cacheable(value = CACHE_SALE_ITEMS, key="#userId", unless="#result==null or #result.size()==0")
 	@Override

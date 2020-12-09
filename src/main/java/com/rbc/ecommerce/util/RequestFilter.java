@@ -51,8 +51,7 @@ public class RequestFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 
 		try {
-			RequestBean.InitParams initParams = new RequestBean.InitParams(req);
-			
+			RequestBean.InitParams initParams = new RequestBean.InitParams(req);			
 			requestBean.initialize(clock.instant(), requestIdService.requestId(), req.getRequestURI(), req.getMethod(), initParams);
 
 			// Compare the userId from token with the userId from the request header..
